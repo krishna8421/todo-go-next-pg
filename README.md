@@ -22,7 +22,7 @@ yarn setup
 ### Start the Postgres server
 
 For Postgres in Docker
-> Change User and Password
+Change User and Password
 ```
 docker run -p 5432:5432 \
     -e POSTGRES_PASSWORD=user \
@@ -50,4 +50,4 @@ yarn start:backend
 yarn start:frontend
 ```
 
-> The Frontend will start on localhost:3000 and the Backend will start on localhost:8000
+#### The Frontend will start on localhost:3000 and the Backend will start on localhost:8000
