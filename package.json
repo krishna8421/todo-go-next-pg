@@ -2,12 +2,12 @@
   "name": "todo-go-next-pg",
   "version": "0.0.1",
   "description": "Todo app",
-  "main": "run.js",
-  "scripts": {
-    "start": "run.js"
-  },
-  "repository": "https://github.com/krishna8421/todo-go-next-pg.git",
   "author": "Krishna Kumar",
+  "repository": "https://github.com/krishna8421/todo-go-next-pg.git",
   "license": "MIT",
-  "dependencies": {}
+  "scripts": {
+    "start:backend": "cd backend && go run .",
+    "start:frontend": "cd frontend && yarn dev",
+    "setup": "cd frontend && yarn install && cd ../backend && go get ."
+  }
 }

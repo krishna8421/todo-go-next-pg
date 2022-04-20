@@ -7,7 +7,7 @@ import {uid} from "uid";
 import {useRoot} from "../hooks/useRoot"
 
 const Home: NextPage = () => {
-  const {newTodo, setNewTodo,todoArr,addNotes} = useRoot()
+  const {newTodo, setNewTodo,todoArr,addTodo} = useRoot()
   return (
     <div className="flex min-h-screen justify-center overflow-hidden bg-gray-100 py-20 font-SpecialElite">
       <div className="mx-4 flex h-[40rem] w-[30rem] flex-col items-center gap-4 rounded-lg bg-white drop-shadow-xl">
@@ -17,7 +17,7 @@ const Home: NextPage = () => {
           onKeyPress={
             (e)=>{
                 if(e.code==="Enter"){
-                    addNotes()
+                  addTodo()
                 }
             }
           }
@@ -29,13 +29,13 @@ const Home: NextPage = () => {
           />
           <div 
             className="absolute right-2 top-2 cursor-pointer rounded-lg bg-violet-500/80 text-violet-800 p-1 transition-all duration-300 hover:bg-violet-500"
-            onClick={addNotes}
+            onClick={addTodo}
           >
             <MdOutlineAdd size={20} />
           </div>
         </div>
         <div className="overflow-scroll mt-4 flex h-[28rem] w-5/6 flex-col items-center gap-2 rounded-md bg-gray-50 p-2">
-          {todoArr.map((todo: ITodo, i:number)=><Todo todo={todo} key={i} />)}
+          {todoArr.map((todo: ITodo, i:number)=> <Todo todo={todo} key={i} /> )}
         </div>
       </div>
     </div>

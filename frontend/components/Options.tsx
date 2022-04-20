@@ -3,12 +3,16 @@ import { Menu, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { HiOutlineDotsVertical } from 'react-icons/hi'
 import { MdOutlineDeleteOutline, MdModeEdit } from "react-icons/md";
+import { useRoot } from '../hooks/useRoot';
 
 interface Props{
   id: string
+  setReadOnly: (edit: boolean) => void
+  focusInput: () => void
 }
 
-export default function Options({id}: Props) {
+export default function Options({ id, setReadOnly, focusInput }: Props) {
+  const {deleteTodo} = useRoot()
   return (
       <Menu as="div" className="relative inline-block text-left">
         <div>
@@ -28,7 +32,8 @@ export default function Options({id}: Props) {
           <Menu.Items className="absolute right-0 w-40 mt-2 z-50 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               <Menu.Item onClick={()=>{
-                  console.log("edit: "+id);
+                  setReadOnly(false)
+                  focusInput()
               }}>
                 {({ active }) => (
                   <button
@@ -50,7 +55,7 @@ export default function Options({id}: Props) {
                 )}
               </Menu.Item>
               <Menu.Item onClick={()=>{
-                  console.log("delete: "+id);
+                  deleteTodo(id)
               }}>
                 {({ active }) => (
                   <button

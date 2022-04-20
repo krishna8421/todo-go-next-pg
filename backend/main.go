@@ -1,25 +1,27 @@
 package main
 
 import (
-	"fmt"
+	"log"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/krishna8421/todo-go-next-pg/backend/database"
 	"github.com/krishna8421/todo-go-next-pg/backend/routes"
 )
 
 func main() {
-	router := gin.Default()
 
-	// Routes
+	router := gin.Default()
+	database.IntiDB()
+	router.Use(cors.Default())
+
 	router.GET("/ping", routes.PingServer)
 	router.POST("/add", routes.AddTodo)
 	router.DELETE("/delete", routes.DeleteTodo)
 	router.GET("/todos", routes.GetTodo)
 	router.PATCH("/edit", routes.EditTodo)
-
-	// Start the server at port 8080
-	err := router.Run(":8080")
+	err := router.Run(":8000")
 	if err != nil {
-		fmt.Println(err)
+		log.Fatal(err)
 		return
 	}
 }
